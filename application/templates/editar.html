@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Produto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Produto</h1>
+        <form action="" method="POST">
+            <label for="nome">Nome do Produto:</label><br>
+            <input type="text" id="nome" name="nome" value="{{ produto[0] }}" required><br><br>
+
+            <label for="descricao">Descrição:</label><br>
+            <textarea id="descricao" name="descricao" required>{{ produto[1] }}</textarea><br><br>
+
+            <label for="valor">Valor:</label><br>
+            <input type="number" id="valor" name="valor" step="0.01" value="{{ produto[2] }}" required><br><br>
+
+            <label for="disponivel">Disponível para venda:</label><br>
+            <select id="disponivel" name="disponivel">
+                <option value="sim" {% if produto[3] == 1 %}selected{% endif %}>Sim</option>
+                <option value="nao" {% if produto[3] == 0 %}selected{% endif %}>Não</option>
+            </select><br><br>
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <br>
+        <a href="{{ url_for('listagem_produtos') }}">Voltar</a>
+    </div>
+</body>
+</html>
